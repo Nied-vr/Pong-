@@ -107,9 +107,11 @@ def exit_game():
 def restore_main_screen():
     title_label.place(x=300, y=40)
     button_frame.place(x=300, y=200)
+    controls_label.place(x=300, y=500)  # Asegurarse de que el label esté visible
     background_label.lift()
     title_label.lift()
     button_frame.lift()
+    controls_label.lift()
 
 def back_to_main_screen():
     game_frame.place_forget()
@@ -119,7 +121,7 @@ def back_to_main_screen():
     restore_main_screen()
 
 def start_tkinter_ui():
-    global window, title_label, button_frame, background_label, game_frame, options_frame, login_frame, profile_listbox, back_button, game_modes_frame
+    global window, title_label, button_frame, background_label, game_frame, options_frame, login_frame, profile_listbox, back_button, game_modes_frame, controls_label
 
     window = tk.Tk()
     window.title("Pong")
@@ -160,6 +162,9 @@ def start_tkinter_ui():
     new_game_button.pack(pady=5)
     options_button.pack(pady=5)
     exit_button.pack(pady=5)
+
+    controls_label = tk.Label(window, text="Jugador Izquierdo: W y S (Arriba y Abajo)\nJugador Derecho: Flecha Arriba y Flecha Abajo", font=("Arial", 12), fg="white", bg="black")
+    controls_label.place(x=300, y=500)
 
     game_frame = tk.Frame(window, bg="black")
     canvas = tk.Canvas(game_frame, bg="black", width=800, height=600)
